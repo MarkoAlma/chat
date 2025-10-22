@@ -1,7 +1,11 @@
 import React from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
-import { addMessage } from '../utils'
+import { addMessage, readMessages } from '../utils'
+import Message from './Message'
+import { useEffect } from 'react'
+import Button from '@mui/material/Button';
+import { IoIosSend } from "react-icons/io";
 
 const Chatroom = ({user}) => {
 
@@ -23,14 +27,21 @@ const Chatroom = ({user}) => {
         await addMessage(message)
     }
 
-  return (
-    <div>
-      chat
+    useEffect(()=>{
+      const unsubscribe = readMessages(setMessages)
+      return unsubscribe
+    },[])
 
-      <form onSubmit={handleSubmit}>
-        <input ref={inputRef} type="text" placeholder='text...'/>
-        <button type='submit'>Send</button>
+    console.log(messages);
+    
+
+  return (
+    <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+      <form onSubmit={handleSubmit} style={{display:'flex', alignItems:'center',width:'60%', justifyContent:'space-between',gap:'10px'}}>
+        <input style={{width:'100%'}} className='szoveg' ref={inputRef} type="text" placeholder='Write a message'/>
+        <Button variant="contained" type='submit' endIcon={<IoIosSend />}> Send </Button>
       </form>
+      <div className='med' style={{display:'flex', marginTop:'25px', backgroundColor:'lightyellow', borderBottomLeftRadius:'10px', flexDirection:'column', gap:'5px', height:'72vh', width:'80vw', overflowY: 'auto'}}> {messages && messages.map(uzenet=><Message key={uzenet.id} msg={uzenet} currentUser={user.uid}/>)}</div>
     </div>
   )
 }

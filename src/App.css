@@ -1,0 +1,58 @@
+.en {
+    background-color: lightblue;
+    border-bottom-right-radius: 0px !important;
+}
+
+.jobbra {
+    justify-content: end;
+    flex-direction: row-reverse;
+}
+
+.balra {
+    border-bottom-left-radius: 0px !important;
+}
+
+body {
+    font-family: roboto, sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.user-info {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 203, 107);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+}
+
+.szoveg {
+    border-radius: 15px;
+    padding: 8.25px;
+    height: 100%;
+    border: 1px solid gray;
+}
+
+form {
+    padding: 10px;
+    background-color: rgb(255, 203, 107);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+@media screen and (max-width: 400px) {
+    .med {
+        width: 95vw !important;
+    }
+}
