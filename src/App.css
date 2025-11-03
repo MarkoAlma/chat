@@ -8,8 +8,20 @@
     flex-direction: row-reverse;
 }
 
+.signin {
+    background-color: rgb(255, 203, 107);
+    border-radius: 10px;
+    padding: 10px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .balra {
     border-bottom-left-radius: 0px !important;
+    background-color: lightgreen;
 }
 
 body {
@@ -19,6 +31,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-color: rgb(240,240,240);
 }
 
 * {
@@ -51,8 +64,44 @@ form {
     border-bottom-right-radius: 10px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
+
+    body {
+        font-size: smaller;
+    }
+
+    .gomb {
+        font-size: smaller !important;
+        padding: 5px !important;
+    }
+
+    .kep {
+        height: 30px !important;
+    }
+
     .med {
-        width: 95vw !important;
+        width: 85vw !important;
+        height: 65vh !important;
+    }
+    .formdiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 80vw !important;
+        max-width: 80vw !important;
+    }
+
+    .user-info {
+
+        gap: 10px;
+        min-width: 80vw !important;
+        max-width: 80vw !important;
+    }
+
+    .fodiv {
+        min-height: 100vh !important;
+        min-width: 100vw !important;
+        border-radius: 0px !important;
     }
 }

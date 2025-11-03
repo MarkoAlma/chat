@@ -1,6 +1,7 @@
 import { signInWithPopup } from 'firebase/auth'
-import React from 'react'
+import { FaGoogle } from "react-icons/fa";
 import { auth, provider } from '../firebaseApp'
+import { Button } from '@mui/material';
 
 const SignIn = () => {
 
@@ -11,8 +12,8 @@ const SignIn = () => {
   return (
 
     <div className='signin'>
-      <p>Sign In</p>
-      <button onClick={handleSignIn}>Google</button>
+      <b>Sign In</b>
+      <Button onClick={handleSignIn}><FaGoogle /></Button>
     </div>
   )
 }

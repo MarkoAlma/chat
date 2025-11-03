@@ -19,13 +19,13 @@ function App() {
   
 
   return (
-    <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', boxShadow:'1px 1px 5px 2px gray', width:'fit-content',   borderRadius:'10px'}}>
-      <h1>ChatRoom</h1>
+    <div className='fodiv' style={{display:'flex', padding: '20px', flexDirection:'column', justifyContent:'center', alignItems:'center', boxShadow:'1px 1px 5px 2px gray', width:'fit-content',   borderRadius:'10px',maxHeight:'90vh'}}>
+      <h1 style={{marginBottom:'10px'}}>ChatRoom</h1>
       {user ? <>
         <div className="user-info">
-          <div style={{display:'flex', alignItems:'center', gap:'10px'}}>{user.photoURL && <img style={{height:'40px'}} src={user.photoURL} alt="fotó" />}
+          <div style={{display:'flex', alignItems:'center', gap:'10px'}}>{user.photoURL && <img className='kep' style={{height:'40px'}} src={user.photoURL} alt="fotó" referrerPolicy="no-referrer"/>}
           <span>{user.displayName}</span> </div>
-          <Button   sx={{
+          <Button className='gomb'   sx={{
     color: 'red',
     borderColor: 'red',
     '&:hover': {

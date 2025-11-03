@@ -13,10 +13,13 @@ const Chatroom = ({user}) => {
 
     const inputRef = useRef()
 
+    const bottomRef = useRef(null) // ez lesz a scroll anchor
+
     const handleSubmit = async(e)=> {
         e.preventDefault()
         const text = inputRef.current.value
         console.log(text);
+        if (text.trim() === "") return;
         const message = {
             text,
             uid:user.uid,
@@ -24,7 +27,10 @@ const Chatroom = ({user}) => {
             displayName:user.displayName,
             timestamp:Date.now()
         }
+        document.querySelector(".szoveg").value = ""
+
         await addMessage(message)
+                bottomRef.current.scrollIntoView({ behavior: "smooth" });
     }
 
     useEffect(()=>{
@@ -37,11 +43,11 @@ const Chatroom = ({user}) => {
 
   return (
     <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-      <form onSubmit={handleSubmit} style={{display:'flex', alignItems:'center',width:'60%', justifyContent:'space-between',gap:'10px'}}>
+      <form className='formdiv' onSubmit={handleSubmit} style={{display:'flex', alignItems:'center',width:'60%', justifyContent:'space-between',gap:'10px'}}>
         <input style={{width:'100%'}} className='szoveg' ref={inputRef} type="text" placeholder='Write a message'/>
-        <Button variant="contained" type='submit' endIcon={<IoIosSend />}> Send </Button>
+        <Button className='gomb' variant="contained" type='submit' endIcon={<IoIosSend />}> Send </Button>
       </form>
-      <div className='med' style={{display:'flex', marginTop:'25px', backgroundColor:'lightyellow', borderBottomLeftRadius:'10px', flexDirection:'column', gap:'5px', height:'72vh', width:'80vw', overflowY: 'auto'}}> {messages && messages.map(uzenet=><Message key={uzenet.id} msg={uzenet} currentUser={user.uid}/>)}</div>
+      <div className='med' style={{display:'flex', marginTop:'25px', backgroundColor:'lightyellow', borderBottomLeftRadius:'10px', flexDirection:'column', gap:'5px', height:'50vh', width:'80vw', overflowY: 'auto'}}> {messages && messages.map(uzenet=><Message key={uzenet.id} msg={uzenet} currentUser={user.uid}/>)}<div ref={bottomRef} /></div>
     </div>
   )
 }
